@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Primary warm parchment radial illumination matching the uploaded parchment image -->
+    <radialGradient id="parchmentBase" cx="54%" cy="38%" r="72%" fx="54%" fy="35%">
+      <stop offset="0%" stop-color="#f7ebd2" />
+      <stop offset="28%" stop-color="#f0dfc0" />
+      <stop offset="58%" stop-color="#e2ca9f" />
+      <stop offset="84%" stop-color="#cfb07c" />
+      <stop offset="100%" stop-color="#b9955e" />
+    </radialGradient>
+
+    <!-- Corner vignette shading -->
+    <radialGradient id="vignetteEdge" cx="50%" cy="50%" r="70%">
+      <stop offset="55%" stop-color="#dfca9f" stop-opacity="0" />
+      <stop offset="85%" stop-color="#b59059" stop-opacity="0.32" />
+      <stop offset="100%" stop-color="#8c6836" stop-opacity="0.52" />
+    </radialGradient>
+
+    <!-- Organic parchment mottled clouds & aged paper grain filter -->
+    <filter id="parchmentMottle" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.0045 0.0055" numOctaves="5" seed="14" result="cloudNoise" />
+      <feColorMatrix
+        type="matrix"
+        values="0 0 0 0 0.78
+                0 0 0 0 0.64
+                0 0 0 0 0.43
+                0 0 0 0.36 0"
+        in="cloudNoise"
+        result="warmClouds"
+      />
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="7" result="mediumFiber" />
+      <feColorMatrix
+        type="matrix"
+        values="0 0 0 0 0.56
+                0 0 0 0 0.42
+                0 0 0 0 0.24
+                0 0 0 0.14 0"
+        in="mediumFiber"
+        result="fiberLayer"
+      />
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" seed="3" result="fineGrain" />
+      <feColorMatrix
+        type="matrix"
+        values="0 0 0 0 0.42
+                0 0 0 0 0.31
+                0 0 0 0 0.17
+                0 0 0 0.065 0"
+        in="fineGrain"
+        result="grainLayer"
+      />
+      <feBlend mode="multiply" in="SourceGraphic" in2="warmClouds" result="step1" />
+      <feBlend mode="multiply" in="step1" in2="fiberLayer" result="step2" />
+      <feBlend mode="multiply" in="step2" in2="grainLayer" result="finalPaper" />
+    </filter>
+  </defs>
+
+  <!-- Base Parchment Layer with Organic Mottled Texture -->
+  <rect width="1600" height="900" fill="url(#parchmentBase)" filter="url(#parchmentMottle)" />
+
+  <!-- Soft Warm Center Highlight & Aged Edge Vignette -->
+  <rect width="1600" height="900" fill="url(#vignetteEdge)" />
+</svg>

@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neutral-950: #141413;
+  --color-neutral-900: #1a1a1a;
+  --color-neutral-800: #222222;
+  --color-neutral-700: #2e2e2d;
+  --color-neutral-600: #3d3b38;
+  --color-neutral-500: #484541;
+  --color-neutral-400: #524f4a;
+  --color-neutral-300: #857d70;
+  --color-neutral-200: #a69c8c;
+  --color-neutral-100: #efe6d5;
+  --color-neutral-50: #f6efe0;
+}
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Kannada', 'Noto Sans Devanagari', 'Noto Sans Telugu', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #1a1a1a;
+    background-color: #ead7b7;
+    background-image:
+      linear-gradient(rgba(252, 247, 237, 0.28), rgba(246, 236, 217, 0.28)),
+      url('/download.jpg'),
+      url('/download.svg');
+    background-size: cover, cover, cover;
+    background-position: center center, center center, center center;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #524f4a;
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    body {
+      background-attachment: scroll;
+    }
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.font-serif-display {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 24s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin-slow {
+    animation: none !important;
+  }
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

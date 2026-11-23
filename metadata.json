@@ -1,0 +1,6 @@
+{
+  "name": "AI-Powered Legal Document Risk Analysis Suite",
+  "description": "An AI-powered legal document analysis system that extracts text from PDF and DOCX files, detects legal risks, checks for missing/conflicting/sensitive information, answers questions with citations, supports multi-language translation, and generates comprehensive PDF reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
